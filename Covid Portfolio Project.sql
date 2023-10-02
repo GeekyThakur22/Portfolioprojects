@@ -99,7 +99,7 @@ order by 2,3
 
 
 
- ---Identify locations where the reproduction rate is above 1.0:
+ ---Identify locations where the reproduction rate is above 1.0
 
  
 SELECT location,[date],CAST(reproduction_rate AS FLOAT) AS reproduction_rate
@@ -107,6 +107,13 @@ FROM [dbo].['covid death$']
 WHERE CAST(reproduction_rate AS FLOAT) > 1.0
 
 
+ --Calculate the average reproduction rate for each continent
+ 
+SELECT continent,AVG(CAST(reproduction_rate AS FLOAT)) AS avg_reproduction_rate
+FROM [dbo].['covid death$']
+WHERE continent is not null
+GROUP BY continent
+ORDER BY continent
 
 --USE CTE
 with popvsVac(continent,location,date,population,new_vaccinations,RollingPeopleVaccinated)
