@@ -57,6 +57,13 @@ group by location
 order by totaldeathcount desc
 
 
+---Population Density vs. Hospital Beds per Thousand:
+ 
+ SELECT location, population_density, hospital_beds_per_thousand
+FROM ['covid vaccinations$']
+WHERE population_density IS NOT NULL AND hospital_beds_per_thousand IS NOT NULL
+
+
 --Breaking things by continent
 select continent,max(total_deaths)as totaldeathcount
 from portfolioproject..['covid death$']
