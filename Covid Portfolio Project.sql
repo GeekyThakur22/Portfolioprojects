@@ -98,6 +98,16 @@ where dea.continent is not null
 order by 2,3
 
 
+
+ ---Identify locations where the reproduction rate is above 1.0:
+
+ 
+SELECT location,[date],CAST(reproduction_rate AS FLOAT) AS reproduction_rate
+FROM [dbo].['covid death$']
+WHERE CAST(reproduction_rate AS FLOAT) > 1.0
+
+
+
 --USE CTE
 with popvsVac(continent,location,date,population,new_vaccinations,RollingPeopleVaccinated)
 as 
